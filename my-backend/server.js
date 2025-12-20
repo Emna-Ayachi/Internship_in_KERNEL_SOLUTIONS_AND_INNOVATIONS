@@ -1,14 +1,28 @@
+const path = require('path');
+const dotenv = require('dotenv');
+dotenv.config({ path: path.join(__dirname, '.env') });
+
+console.log('Running in folder:', __dirname);
+console.log(process.env);
+console.log('ACCESS_TOKEN_SECRET:', process.env.ACCESS_TOKEN_SECRET); 
+console.log('REFRESH_TOKEN_SECRET:', process.env.REFRESH_TOKEN_SECRET); 
+
+
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 app.use(express.json());
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const dotenv = require ('dotenv')
+// const dotenv = require ('dotenv')
 const cors = require('cors');
 app.use(cors());
 
-dotenv.config()
+
+// dotenv.config(); 
+// console.log('ACCESS_TOKEN_SECRET:', process.env.ACCESS_TOKEN_SECRET);
+// console.log('REFRESH_TOKEN_SECRET:', process.env.REFRESH_TOKEN_SECRET);
+
 mongoose.connect('mongodb://localhost:27017/application', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
